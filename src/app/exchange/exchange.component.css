@@ -1,0 +1,41 @@
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.currency-select {
+  width: 300px;
+  margin-bottom: 30px;
+}
+
+table {
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+th.mat-header-cell {
+  font-weight: 700;
+  color: #3f51b5;
+  text-align: center;
+}
+
+td.mat-cell {
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.mat-elevation-z8 {
+  border-radius: 8px;
+}
+.currency-select .mat-form-field-label {
+  text-align: right;
+  direction: rtl;
+  right: 0;
+  left: auto;
+}
