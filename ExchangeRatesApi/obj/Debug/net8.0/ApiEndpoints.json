@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "ExchangeRatesApi.Controllers.ExchangeController",
+    "Method": "GetRates",
+    "RelativePath": "api/Exchange/{baseCurrency}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "baseCurrency",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
