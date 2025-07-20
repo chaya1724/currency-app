@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qOTP4+EnUgw=",
+  "dgSpecHash": "WwrJFCyjlDQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\חיה\\Algoritech\\ExchangeRatesApi\\ExchangeRatesApi.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\חיה\\Algoritech\\currency-app\\ExchangeRatesApi\\ExchangeRatesApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.4\\microsoft.aspnetcore.openapi.8.0.4.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

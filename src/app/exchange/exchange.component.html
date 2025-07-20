@@ -1,11 +1,13 @@
 <!-- exchange-rates.component.html -->
 <div class="container">
-  <mat-form-field appearance="outline" class="currency-select" >
-    <mat-label>בחר מטבע בסיס</mat-label>
-    <mat-select [(value)]="baseCurrency" (selectionChange)="loadRates($event.value)">
-      <mat-option *ngFor="let c of currencies" [value]="c">{{ c }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+<mat-form-field appearance="outline" class="currency-select">
+  <mat-label>בחר מטבע בסיס</mat-label>
+  <mat-select [(value)]="baseCurrency" (selectionChange)="loadRates($event.value)">
+    <mat-option *ngFor="let c of currencies" [value]="c">
+      {{ getCurrencyName(c) }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
   <table mat-table [dataSource]="exchangeRates" class="mat-elevation-z8" matSort>
 

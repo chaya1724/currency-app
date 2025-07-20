@@ -1,7 +1,5 @@
-// exchange-rates.component.ts
-
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ExchangeService } from '../services/exchange.service';
 
 interface ExchangeRate {
   currency: string;
@@ -14,30 +12,43 @@ interface ExchangeRate {
   styleUrls: ['./exchange.component.css']
 })
 export class ExchangeComponent implements OnInit {
-  currencies = ['USD', 'EUR', 'GBP', 'CNY', 'ILS'];
-  baseCurrency = 'USD';
+  currenciesMap: Record<string, string> = {};
+  currencies: string[] = [];
+  baseCurrency = '';
   exchangeRates: ExchangeRate[] = [];
   displayedColumns = ['base', 'currency', 'rate'];
 
-  constructor(private http: HttpClient) {}
+  constructor(private exchangeService: ExchangeService) {}
 
   ngOnInit() {
-    this.loadRates(this.baseCurrency);
+    this.loadCurrencies();
+  }
+
+  loadCurrencies() {
+    this.exchangeService.getCurrencies().subscribe((res) => {
+      const allowed = ['USD', 'EUR', 'GBP', 'CNY', 'ILS'];
+      this.currenciesMap = res.currencies;
+      this.currencies = Object.keys(res.currencies).filter(c => allowed.includes(c));
+      if (this.currencies.length > 0) {
+        this.baseCurrency = this.currencies[0];
+        this.loadRates(this.baseCurrency);
+      }
+    });
   }
 
   loadRates(base: string) {
     this.baseCurrency = base;
-    this.http
-      .get<{ rates: Record<string, number> }>(
-        `https://localhost:44353/api/Exchange/${base}`
-      )
-      .subscribe((res) => {
-        this.exchangeRates = [];
-        for (const [currency, rate] of Object.entries(res.rates)) {
-          if (currency !== base && this.currencies.includes(currency)) {
-            this.exchangeRates.push({ currency, rate });
-          }
+    this.exchangeService.getExchangeRates(base).subscribe((res) => {
+      this.exchangeRates = [];
+      for (const [currency, rate] of Object.entries(res.rates)) {
+        if (currency !== base && this.currencies.includes(currency)) {
+          this.exchangeRates.push({ currency, rate });
         }
-      });
+      }
+    });
+  }
+
+  getCurrencyName(code: string): string {
+    return this.currenciesMap[code] ? `${code} - ${this.currenciesMap[code]}` : code;
   }
 }

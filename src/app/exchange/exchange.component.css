@@ -17,17 +17,23 @@
 table {
   width: 100%;
   font-size: 1.1rem;
+  border-collapse: collapse;
 }
 
+/* שורת כותרת הטבלה */
 th.mat-header-cell {
-  font-weight: 700;
-  color: #3f51b5;
+  font-weight: 600;
+  color: #333;
+  background-color: #eef6fb; /* תכלת־אפור בהיר במיוחד */
   text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
 }
 
 td.mat-cell {
   padding: 12px 8px;
   text-align: center;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .mat-elevation-z8 {
@@ -38,4 +44,21 @@ td.mat-cell {
   direction: rtl;
   right: 0;
   left: auto;
+}
+
+/* שורות לסירוגין בגווני אפור־כחלחל בהיר */
+tr.mat-row:nth-child(even) {
+  background-color: #fbfdff; /* כמעט לבן עם טיפונת תכלת */
+}
+
+/* רקע בהיר לריחוף */
+tr.mat-row:hover {
+  background-color: #f0f4f8; /* אפור־תכלת עדין מאוד */
+  transition: background-color 0.3s ease;
+}
+
+/* אפקט צל עדין למסגרת */
+.mat-elevation-z8 {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }

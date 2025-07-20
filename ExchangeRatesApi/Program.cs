@@ -1,3 +1,5 @@
+using ExchangeRatesApi.Config;
+using ExchangeRatesApi.Models;
 using ExchangeRatesApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +25,8 @@ builder.Services.AddCors(options =>
     });
 });
 
-
+builder.Services.Configure<FrankfurterApiSettings>(
+builder.Configuration.GetSection("FrankfurterApi"));
 
 var app = builder.Build();
 app.UseCors();

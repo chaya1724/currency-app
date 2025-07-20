@@ -5,6 +5,18 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Exchange/currencies": {
+      "get": {
+        "tags": [
+          "Exchange"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Exchange/{baseCurrency}": {
       "get": {
         "tags": [

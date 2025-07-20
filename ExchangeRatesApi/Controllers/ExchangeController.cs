@@ -1,4 +1,4 @@
-﻿using ExchangeRatesApi.Services;
+using ExchangeRatesApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExchangeRatesApi.Controllers;
@@ -13,8 +13,18 @@ public class ExchangeController : ControllerBase
     {
         _exchangeService = exchangeService;
     }
+  [HttpGet("currencies")]
+  public async Task<IActionResult> GetCurrencies()
+  {
+    var currencies = await _exchangeService.GetAvailableCurrenciesAsync();
 
-    [HttpGet("{baseCurrency}")]
+    if (currencies == null || currencies.Count == 0)
+      return BadRequest("Unable to retrieve currencies");
+
+    return Ok(new { currencies });
+  }
+
+  [HttpGet("{baseCurrency}")]
     public async Task<IActionResult> GetRates(string baseCurrency)
     {
         var data = await _exchangeService.GetExchangeRatesAsync(baseCurrency);
