@@ -16,6 +16,9 @@ namespace ExchangeRatesApi.Services
       _baseUrl = options.Value.BaseUrl.TrimEnd('/');
     }
 
+    /// <summary>
+    /// Returns the list of available currencies from the external API.
+    /// </summary>
     public async Task<Dictionary<string, string>> GetAvailableCurrenciesAsync()
     {
       var url = $"{_baseUrl}/currencies";
@@ -34,6 +37,9 @@ namespace ExchangeRatesApi.Services
       return currencies;
     }
 
+    /// <summary>
+    /// Returns exchange rates for the selected base currency.
+    /// </summary>
     public async Task<ExchangeApiResponse> GetExchangeRatesAsync(string baseCurrency)
     {
       var url = $"{_baseUrl}/latest?from={baseCurrency}";
